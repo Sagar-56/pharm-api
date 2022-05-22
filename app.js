@@ -28,9 +28,9 @@ MongoClient.connect(mongoUrl, (err, client) => {
 
 app.get('/productData', (req,res) => {
     let query = {};
-    let stateId = Number(req.query.state_id);
+    let stateId = Number(req.query.State_id);
     if(stateId){
-        query = {state_id:stateId};
+        query = {State_id:stateId};
     }
     db.collection('productData').find(query).toArray((err,result) => {
        if(err) throw err;
