@@ -28,8 +28,10 @@ MongoClient.connect(mongoUrl, (err, client) => {
 
 app.get('/productData', (req,res) => {
     let query = {};
-    let id = req.query.id;
-    console.log(`id is ${id}`);
+    let stateId = Number(req.query.state_id);
+    if(stateId){
+        query = {state_id:stateId};
+    }
     db.collection('productData').find(query).toArray((err,result) => {
        if(err) throw err;
        res.send(result);
@@ -121,7 +123,16 @@ app.get('/healthArticle', (req,res) => {
 
 
 app.get('/price', (req,res) => {
-    db.collection('price').find().toArray((err,result) =>{
+    let query = {};
+    let stateId =  Number(req.query.State_id);
+    let listId = Number(req.query.list_id);
+    if(stateId){
+        query ={State_id:stateId}
+    }
+    if(listId){
+        query = {list_id:listId}
+    }
+    db.collection('price').find(query).toArray((err,result) =>{
         if(err) throw err;
         res.send(result);
     })
