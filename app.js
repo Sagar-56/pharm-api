@@ -89,6 +89,40 @@ app.get('/dealsdata', (req,res) => {
  })
 })
 
+
+app.get('/featurePage2', (req,res) => {
+    let query = {};
+    let stateId = Number(req.query.state_id);
+    let featureId = Number(req.query.feature_id);
+    if(stateId){
+        query = {state_id:stateId};
+    }
+    else if(featureId){
+        query = {feature_id:featureId}
+    }
+    db.collection('featurePage2').find(query).toArray((err,result) => {
+       if(err) throw err;
+       res.send(result);
+ })
+})
+
+
+app.get('/cashbackdetailsPage2', (req,res) => {
+    let query = {};
+    let stateId = Number(req.query.state_id);
+    let cashbackId = Number(req.query.cashback_id);
+    if(stateId){
+        query = {state_id:stateId};
+    }
+    else if(cashbackId){
+        query = {cashback_id:cashbackId}
+    }
+    db.collection('cashbackdetailsPage2').find(query).toArray((err,result) => {
+       if(err) throw err;
+       res.send(result);
+ })
+})
+
 app.get('/feature', (req,res) => {
     let query = {};
     let stateId = Number(req.query.state_id);
