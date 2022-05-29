@@ -90,6 +90,23 @@ app.get('/dealsdata', (req,res) => {
 })
 
 
+app.get('/dealsPage2', (req,res) => {
+    let query = {};
+    let stateId = Number(req.query.state_id);
+    let DealsId = Number(req.query.Deals_id);
+    if(stateId){
+        query = {state_id:stateId};
+    }
+    else if(DealsId){
+        query = {Deals_id:DealsId}
+    }
+    db.collection('DealsPage2').find(query).toArray((err,result) => {
+       if(err) throw err;
+       res.send(result);
+ })
+})
+
+
 app.get('/featurePage2', (req,res) => {
     let query = {};
     let stateId = Number(req.query.state_id);
@@ -122,6 +139,7 @@ app.get('/cashbackdetailsPage2', (req,res) => {
        res.send(result);
  })
 })
+
 
 app.get('/feature', (req,res) => {
     let query = {};
