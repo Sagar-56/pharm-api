@@ -107,17 +107,17 @@ app.get('/cashbackdetails', (req,res) => {
 // })
 // 
 
-app.get('/dealsdata/:id', (req,res) => {
-       let stateId = Number(req.params.id)
+app.get('/dealsdata/:state_id', (req,res) => {
+       let stateId = Number(req.params.state_id)
     // let productId = mongo.ObjectId(req.params.id)
-        db.collection('productDetails').find({state_id:stateId}).toArray((err,result) => {
+        db.collection('dealsdata').find({state_id:stateId}).toArray((err,result) => {
            if(err) throw err;
            res.send(result);
      })
     })
 
-app.get('/DealsPage2/:id', (req, res) => {
-    let stateId = req.params.id;
+app.get('/DealsPage2/:state_id', (req, res) => {
+    let stateId = req.params.state_id;
     db.collection('DealsPage2').find({state_id:stateId}).toArray((err, result) => {
         if (err) throw err;
         res.send(result);
