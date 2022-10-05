@@ -106,18 +106,19 @@ app.get('/cashbackdetails', (req,res) => {
 //  })
 // })
 // 
-app.get('/dealsdata/:id', (req, res) => {
-    let id = req.params.id;
-    db.collection('dealsdata').find().toArray((err, result) => {
-        if (err) throw err;
-        res.send(result);
-    })
-})
 
+app.get('/dealsdata/:id', (req,res) => {
+       let stateId = Number(req.params.id)
+    // let productId = mongo.ObjectId(req.params.id)
+        db.collection('productDetails').find({state_id:stateId}).toArray((err,result) => {
+           if(err) throw err;
+           res.send(result);
+     })
+    })
 
 app.get('/DealsPage2/:id', (req, res) => {
-    let id = req.params.id;
-    db.collection('DealsPage2').find().toArray((err, result) => {
+    let stateId = req.params.id;
+    db.collection('DealsPage2').find({state_id:stateId}).toArray((err, result) => {
         if (err) throw err;
         res.send(result);
     })
