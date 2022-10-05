@@ -73,55 +73,37 @@ app.get('/cashbackdetails', (req,res) => {
 })
 
 
-// app.get('/dealsdata', (req,res) => {
-    // let query = {};
-    // let stateId = Number(req.query.state_id);
-    // let dealsId = Number(req.query.deals_id);
-    // if(stateId){
-        // query = {state_id:stateId};
-    // }
-    // else if(dealsId){
-        // query = {deals_id:dealsId}
-    // }
-    // db.collection('dealsdata').find(query).toArray((err,result) => {
-    //    if(err) throw err;
-    //    res.send(result);
-//  })
-// })
-// 
-// 
-// app.get('/dealsPage2', (req,res) => {
-    // let query = {};
-    // let stateId = Number(req.query.state_id);
-    // let DealsId = Number(req.query.Deals_id);
-    // if(stateId){
-        // query = {state_id:stateId};
-    // }
-    // else if(DealsId){
-        // query = {Deals_id:DealsId}
-    // }
-    // db.collection('DealsPage2').find(query).toArray((err,result) => {
-    //    if(err) throw err;
-    //    res.send(result);
-//  })
-// })
-// 
+app.get('/dealsdata', (req,res) => {
+    let query = {};
+    let stateId = Number(req.query.state_id);
+    let dealsId = Number(req.query.deals_id);
+    if(stateId){
+        query = {state_id:stateId};
+    }
+    else if(dealsId){
+        query = {deals_id:dealsId}
+    }
+    db.collection('dealsdata').find(query).toArray((err,result) => {
+       if(err) throw err;
+       res.send(result);
+ })
+})
 
-app.get('/dealsdata/:state_id', (req,res) => {
-       let stateId = Number(req.params.state_id)
-    // let productId = mongo.ObjectId(req.params.id)
-        db.collection('dealsdata').find({state_id:stateId}).toArray((err,result) => {
-           if(err) throw err;
-           res.send(result);
-     })
-    })
 
-app.get('/DealsPage2/:state_id', (req, res) => {
-    let stateId = req.params.state_id;
-    db.collection('DealsPage2').find({state_id:stateId}).toArray((err, result) => {
-        if (err) throw err;
-        res.send(result);
-    })
+app.get('/dealsPage2', (req,res) => {
+    let query = {};
+    let stateId = Number(req.query.state_id);
+    let DealsId = Number(req.query.Deals_id);
+    if(stateId){
+        query = {state_id:stateId};
+    }
+    else if(DealsId){
+        query = {Deals_id:DealsId}
+    }
+    db.collection('DealsPage2').find(query).toArray((err,result) => {
+       if(err) throw err;
+       res.send(result);
+ })
 })
 
 
