@@ -73,37 +73,54 @@ app.get('/cashbackdetails', (req,res) => {
 })
 
 
-app.get('/dealsdata', (req,res) => {
-    let query = {};
-    let stateId = Number(req.query.state_id);
-    let dealsId = Number(req.query.deals_id);
-    if(stateId){
-        query = {state_id:stateId};
-    }
-    else if(dealsId){
-        query = {deals_id:dealsId}
-    }
-    db.collection('dealsdata').find(query).toArray((err,result) => {
-       if(err) throw err;
-       res.send(result);
- })
+// app.get('/dealsdata', (req,res) => {
+    // let query = {};
+    // let stateId = Number(req.query.state_id);
+    // let dealsId = Number(req.query.deals_id);
+    // if(stateId){
+        // query = {state_id:stateId};
+    // }
+    // else if(dealsId){
+        // query = {deals_id:dealsId}
+    // }
+    // db.collection('dealsdata').find(query).toArray((err,result) => {
+    //    if(err) throw err;
+    //    res.send(result);
+//  })
+// })
+// 
+// 
+// app.get('/dealsPage2', (req,res) => {
+    // let query = {};
+    // let stateId = Number(req.query.state_id);
+    // let DealsId = Number(req.query.Deals_id);
+    // if(stateId){
+        // query = {state_id:stateId};
+    // }
+    // else if(DealsId){
+        // query = {Deals_id:DealsId}
+    // }
+    // db.collection('DealsPage2').find(query).toArray((err,result) => {
+    //    if(err) throw err;
+    //    res.send(result);
+//  })
+// })
+// 
+app.get('/dealsdata/:id', (req, res) => {
+    let id = req.params.id;
+    db.collection('dealsdata').find().toArray((err, result) => {
+        if (err) throw err;
+        res.send(result);
+    })
 })
 
 
-app.get('/dealsPage2', (req,res) => {
-    let query = {};
-    let stateId = Number(req.query.state_id);
-    let DealsId = Number(req.query.Deals_id);
-    if(stateId){
-        query = {state_id:stateId};
-    }
-    else if(DealsId){
-        query = {Deals_id:DealsId}
-    }
-    db.collection('DealsPage2').find(query).toArray((err,result) => {
-       if(err) throw err;
-       res.send(result);
- })
+app.get('/DealsPage2/:id', (req, res) => {
+    let id = req.params.id;
+    db.collection('DealsPage2').find().toArray((err, result) => {
+        if (err) throw err;
+        res.send(result);
+    })
 })
 
 
