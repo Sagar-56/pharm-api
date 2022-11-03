@@ -29,8 +29,8 @@ MongoClient.connect(mongoUrl, (err, client) => {
 app.get('/productData', (req, res) => {
     let query = {};
     let stateId = Number(req.query.State_id);
-    let categoryId = Number(req.query.categories);
-    let priceId = Number(req.query.prices)
+    let categoryId = req.query.categories;
+    let priceId = req.query.prices;
     if (stateId) {
         query = { State_id: stateId };
     } else if (categoryId) {
@@ -183,7 +183,8 @@ app.get('/healthArticle', (req, res) => {
 app.get('/price', (req, res) => {
     let query = {};
     let stateId = Number(req.query.State_id);
-    let listId = Number(req.query.list_id); let priceId = Number(req.query.prices)
+    let listId = Number(req.query.list_id); 
+    let priceId = req.query.prices;
     if (stateId) {
         query = { State_id: stateId }
     }
@@ -202,7 +203,7 @@ app.get('/productLists', (req, res) => {
     let query = {};
     let stateId = Number(req.query.State_id);
     let categoryId = Number(req.query.Category_id);
-    let categoriesId = Number(req.query.categories);
+    let categoriesId = req.query.categories;
     if (stateId) {
         query = { State_id: stateId }
     } else if (categoryId) {
