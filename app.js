@@ -140,7 +140,7 @@ app.get('/cashbackdetailsPage2', (req, res) => {
     else if (cashbackId) {
         query = { cashback_id: cashbackId }
     }
-    db.collection('cashbackDetailsPage2').find(query).toArray((err, result) => {
+    db.collection('cashbackdetailsPage2').find(query).toArray((err, result) => {
         if (err) throw err;
         res.send(result);
     })
