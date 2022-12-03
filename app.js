@@ -5,7 +5,8 @@ const MongoClient = mongo.MongoClient;
 const dotenv = require('dotenv');
 dotenv.config();
 let port = process.env.PORT || 4356;
-const mongoUrl = "mongodb+srv://Sagarbehera:Sagar456@cluster0.96hmj.mongodb.net/eduInternJan?retryWrites=true&w=majority";
+// const mongoUrl = "mongodb+srv://Sagarbehera:Sagar4567@cluster0.96hmj.mongodb.net/eduInternJan?retryWrites=true&w=majority";
+const mongoUrl = "mongodb+srv://Sagarbehera:Sagar4567@atlascluster.hlzvvcm.mongodb.net/eduInternJan";
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
