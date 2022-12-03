@@ -18,9 +18,9 @@ app.get('/', (req, res) => {
     res.send("Let's Express")
 })
 
-MongoClient.connect(mongoUrl, (err, client) => {
+MongoClient.connect(mongoUrl,async (err, client) => {
     if (err) console.log(`Error While Connecting`);
-    db = client.db('eduInternJan');
+    db =await client.db('eduInternJan');
     app.listen(port, () => {
         console.log(`server is running on port ${port}`)
     })
