@@ -18,10 +18,11 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send("Let's Express")
 })
+const client = new MongoClient(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true});
 
-MongoClient.connect(mongoUrl,async (err, client) => {
+client.connect((err) => {
     if (err) console.log(`Error While Connecting`);
-    db =await client.db('eduInternJan');
+    const db = client.db('eduInternJan');
     app.listen(port, () => {
         console.log(`server is running on port ${port}`)
     })
