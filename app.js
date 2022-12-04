@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 MongoClient.connect(mongoUrl, (err, client) => {
     if (err) console.log(`Error While Connecting`);
-   const db = client.db('eduInternJan');
+    db = client.db('eduInternJan');
     app.listen(port, () => {
         console.log(`server is running on port ${port}`)
     })
